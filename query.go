@@ -207,10 +207,15 @@ func (q *AggregationQuery) AddPostAggregator(postAggregator PostAggregation) {
 	q.PostAggregations = append(q.PostAggregations, postAggregator)
 }
 
-func (q *AggregationQuery) GetJSONString() (string, error) {
+func (q *AggregationQuery) GetJSON() ([]byte, error) {
 	j, err := json.Marshal(q)
 	if err != nil {
-		return "", err
+		return nil, err
 	}
+	return j, nil
+}
+
+func (q *AggregationQuery) GetJSONString() (string, error) {
+	j, _ := q.GetJSON()
 	return string(j), nil
 }
