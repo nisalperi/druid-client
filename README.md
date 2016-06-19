@@ -5,7 +5,7 @@ Currently Supports Timeseries and TopNQuery.
 
 ### TopN query
 
-```
+```go
 client := druid.New("HOST_URL")
 countryFilter := druid.Filter{Type: druid.FilterSelector, Dimension: "country_name", Value: "United States"}
 country2Filter := druid.Filter{Type: druid.FilterSelector, Dimension: "country_name", Value: "Australia"}
