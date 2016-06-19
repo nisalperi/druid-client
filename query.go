@@ -180,6 +180,17 @@ func TimeseriesQuery(dataSource string, descending bool, granuarity string) *Agg
 	}
 }
 
+func TopNQuery(dataSource string, dimension string, metric string, threshold int, granuarity string) *AggregationQuery {
+	return &AggregationQuery{
+		QueryType:   TopN,
+		DataSource:  dataSource,
+		Dimension:   dimension,
+		Metric:      metric,
+		Threshold:   threshold,
+		Granularity: granuarity,
+	}
+}
+
 func (q *AggregationQuery) AddInterval(interval string) {
 	q.Intervals = append(q.Intervals, interval)
 }
