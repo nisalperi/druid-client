@@ -63,6 +63,8 @@ const (
 	AggregatorLongMax   = "longMax"
 
 	AggregatorHyperUnique = "hyperUnique"
+
+	AggregatorCardinality = "cardinality"
 )
 
 // Post Aggregator
