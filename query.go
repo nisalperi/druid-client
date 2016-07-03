@@ -61,6 +61,8 @@ const (
 	AggregatorDoubleMax = "doubleMax"
 	AggregatorLongMin   = "longMin"
 	AggregatorLongMax   = "longMax"
+
+	AggregatorHyperUnique = "hyperUnique"
 )
 
 // Post Aggregator
