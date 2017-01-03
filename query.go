@@ -152,14 +152,15 @@ type Filter struct {
 }
 
 type AggregationQuery struct {
-	QueryType   string  `json:"queryType"`
-	DataSource  string  `json:"dataSource"`
-	Dimension   string  `json:"dimension,omitempty"`
-	Descending  bool    `json:"descending"`
-	Threshold   int     `json:"threshold,omitempty"`
-	Metric      string  `json:"metric,omitempty"`
-	Granularity string  `json:"granularity,omitempty"`
-	Filter      *Filter `json:"filter"`
+	QueryType   string   `json:"queryType"`
+	DataSource  string   `json:"dataSource"`
+	Dimension   string   `json:"dimension,omitempty"`
+	Dimensions  []string `json:"dimensions,omitempty"`
+	Descending  bool     `json:"descending"`
+	Threshold   int      `json:"threshold,omitempty"`
+	Metric      string   `json:"metric,omitempty"`
+	Granularity string   `json:"granularity,omitempty"`
+	Filter      *Filter  `json:"filter"`
 
 	Aggregations []Aggregation `json:"aggregations"`
 
@@ -191,6 +192,15 @@ func TopNQuery(dataSource string, dimension string, metric string, threshold int
 		Dimension:   dimension,
 		Metric:      metric,
 		Threshold:   threshold,
+		Granularity: granuarity,
+	}
+}
+
+func GroupByQuery(dataSource string, dimensions []string, granuarity string) *AggregationQuery {
+	return &AggregationQuery{
+		QueryType:   GroupBy,
+		DataSource:  dataSource,
+		Dimensions:  dimensions,
 		Granularity: granuarity,
 	}
 }
